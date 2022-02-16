@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.container .menu {
+  padding: 26px 32px;
+  background: #fff;
+  border-right: 3px solid #1d1b31;
+  width: 450px;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 40px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.container .menu__title {
+  font-weight: 500;
+  font-size: 2rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.container .menu .target__size {
+  -webkit-transition: height ease 1s;
+  transition: height ease 1s;
+  background: #f2f2f2;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 16px 20px;
+  width: 100%;
+}
+.container .menu .target__size .menu__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  row-gap: 10px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.container .menu .target__size .menu__options .subtitle {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.container .menu .target__size .menu__options .subtitle h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.container .menu .target__size .menu__options .subtitle i {
+  -webkit-transition: -webkit-transform ease 0.4s;
+  transition: -webkit-transform ease 0.4s;
+  transition: transform ease 0.4s;
+  transition: transform ease 0.4s, -webkit-transform ease 0.4s;
+  font-size: 2.2rem;
+}
+.container .menu .target__size .menu__options .select {
+  -webkit-transition: height ease 1s;
+  transition: height ease 1s;
+  width: 100%;
+  display: none;
+  height: auto;
+  overflow: hidden;
+  list-style: none;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.container .menu .target__size .menu__options .select li {
+  height: 50px;
+  width: 100%;
+  -webkit-transition: background ease 0.4s;
+  transition: background ease 0.4s;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+.container .menu .target__size.active {
+  height: auto;
+}
+.container .menu .target__size.active .menu__options .subtitle i {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.container .menu .target__size.active .select {
+  display: block;
+}
+.container .menu .target__size.active .select li:hover {
+  background: #a8bbd1;
+}
+.container .range {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.container .range .target {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.container .range .target .red {
+  width: 100%;
+  height: 100%;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.container .range .target .orange {
+  width: 60%;
+  height: 60%;
+  background: #ff8800;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.container .range .target .green {
+  width: 30%;
+  height: 30%;
+  background: #05ac1b;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.container .playBtn {
+  border: none;
+  font-size: 1.8rem;
+  background: #1d1b31;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 40px;
+}
