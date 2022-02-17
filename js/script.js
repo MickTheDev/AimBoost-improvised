@@ -11,6 +11,24 @@ function rng(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function moveTarget() {
+  document.querySelector(".target").style.setProperty(
+    "transform",
+    `translate(${rng(
+      -document.querySelector(".range").offsetWidth / 2 +
+        document.querySelector(".target").offsetWidth / 2,
+      document.querySelector(".range").offsetWidth / 2 -
+        document.querySelector(".target").offsetWidth / 2
+    )}px,
+           ${rng(
+             -document.querySelector(".range").offsetHeight / 2 +
+               document.querySelector(".target").offsetHeight / 2,
+             document.querySelector(".range").offsetHeight / 2 -
+               document.querySelector(".target").offsetHeight / 2
+           )}px`
+  );
+}
+
 document
   .querySelector(".target__size .subtitle")
   .addEventListener("click", () => {
@@ -42,24 +60,23 @@ document.querySelectorAll(".select li").forEach((option) => {
 });
 
 document.querySelector(".playBtn").addEventListener("click", () => {
-  document.querySelector(".target").innerHTML = `<div class="red"></div>
-        <div class="orange"></div>
-        <div class="green"></div>`;
-  document.querySelector(".target").addEventListener("click", () => {
-    document.querySelector(".target").style.setProperty(
-      "transform",
-      `translate(${rng(
-        -document.querySelector(".range").offsetWidth / 2 +
-          document.querySelector(".target").offsetWidth / 2,
-        document.querySelector(".range").offsetWidth / 2 -
-          document.querySelector(".target").offsetWidth / 2
-      )}px,
-             ${rng(
-               -document.querySelector(".range").offsetHeight / 2 +
-                 document.querySelector(".target").offsetHeight / 2,
-               document.querySelector(".range").offsetHeight / 2 -
-                 document.querySelector(".target").offsetHeight / 2
-             )}px`
-    );
-  });
+  let targets = document.querySelector(".numOfTargets").value;
+
+  if (Number(targets)) {
+    document.querySelector(".target").innerHTML = `<div class="red"></div>
+                <div class="orange"></div>
+                <div class="green"></div>`;
+    document.querySelector(".target").addEventListener("click", moveTarget);
+    document.querySelector(".range").addEventListener("click", moveTarget);
+    document.querySelector(".menu").classList.add("inGame");
+    setTimeout(() => {
+      document.querySelector(".num__of__targets").removeChild(document.querySelector(".num__of__targets").querySelector('p'))
+    }, 1000)
+  } else {
+    let p = document.createElement('p')
+    p.innerHTML = "Podaj ilość celi"
+    if(!document.querySelector(".num__of__targets").contains(document.querySelector("p"))) {
+      document.querySelector(".num__of__targets").appendChild(p)
+    }
+  }
 });

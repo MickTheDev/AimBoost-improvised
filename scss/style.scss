@@ -9,6 +9,16 @@
     font-family: 'Poppins', sans-serif;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .container {
     height: 100vh;
     width: 100%;
@@ -22,6 +32,18 @@
         @include flex(column);
         gap: 40px;
         justify-content: flex-start;
+        transition: all ease .4s;
+        &.inGame {
+            animation: hideMenu .4s linear forwards;
+        }
+        
+        @keyframes hideMenu {
+            to {
+                transform: translateX(-100%);
+                display: none;
+            }
+        }
+
         &__title {
             font-weight: 500;
             font-size: 2rem;
@@ -93,6 +115,38 @@
 
         }
     }
+
+    .num__of__targets {
+        position: relative;
+        height: 150px;
+        width: 100%;
+        @include flex(column);
+        justify-content: space-between;
+        row-gap: 10px;
+        input {
+            width: 100%;
+            height: 50%;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            background: #f2f2f2;
+            border: none;
+            outline: none;
+            padding: 16px 32px;
+            font-size: 1.3rem;
+        }
+        p {
+            width: 100%;
+            height: auto;
+            padding: 16px 32px;
+            font-size: 1.3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            color: rgb(46, 32, 32);
+            background: rgba(190, 57, 57, .3);
+            border: 1px solid rgb(173, 60, 60);
+        }
+    }
+
     .range {
         width: 100%;
         height: 100vh;

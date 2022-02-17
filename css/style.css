@@ -7,6 +7,16 @@
   font-family: "Poppins", sans-serif;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .container {
   height: 100vh;
   width: 100%;
@@ -47,6 +57,26 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-transition: all ease 0.4s;
+  transition: all ease 0.4s;
+}
+.container .menu.inGame {
+  -webkit-animation: hideMenu 0.4s linear forwards;
+          animation: hideMenu 0.4s linear forwards;
+}
+@-webkit-keyframes hideMenu {
+  to {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    display: none;
+  }
+}
+@keyframes hideMenu {
+  to {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    display: none;
+  }
 }
 .container .menu__title {
   font-weight: 500;
@@ -146,6 +176,52 @@
 }
 .container .menu .target__size.active .select li:hover {
   background: #a8bbd1;
+}
+.container .num__of__targets {
+  position: relative;
+  height: 150px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  row-gap: 10px;
+}
+.container .num__of__targets input {
+  width: 100%;
+  height: 50%;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: #f2f2f2;
+  border: none;
+  outline: none;
+  padding: 16px 32px;
+  font-size: 1.3rem;
+}
+.container .num__of__targets p {
+  width: 100%;
+  height: auto;
+  padding: 16px 32px;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  color: #2e2020;
+  background: rgba(190, 57, 57, 0.3);
+  border: 1px solid #ad3c3c;
 }
 .container .range {
   width: 100%;
