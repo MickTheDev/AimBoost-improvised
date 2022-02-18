@@ -1,8 +1,8 @@
 let targetSize;
 let hit = new Audio("audio/hit.wav");
-let hits = 0;
-let allHits = 0;
-let accuracy = '100%'
+let hits;
+let allHits;
+let accuracy = "0%";
 let targetSizes = {
   duży: 100,
   średni: 75,
@@ -69,6 +69,8 @@ document.querySelectorAll(".select li").forEach((option) => {
 // game start
 document.querySelector(".playBtn").addEventListener("click", () => {
   let targets = document.querySelector(".numOfTargets").value;
+  allHits = 0;
+  hits = 0;
 
   if (Number(targets) && targets > 0) {
     document.querySelector(".target").innerHTML = `<div class="red"></div>
@@ -85,32 +87,32 @@ document.querySelector(".playBtn").addEventListener("click", () => {
     document.querySelector(".range").addEventListener("click", () => {
       allHits++;
       targets--;
-      accuracy = `${Math.floor((hits / allHits) * 100)}%`
+      accuracy = `${Math.floor((hits / allHits) * 100)}%`;
       if (targets === 0) {
         document.querySelector(".menu").classList.remove("inGame");
         document.querySelector(".stats").classList.add("active");
         document
-        .querySelector(".target")
-        .removeChild(
-          document.querySelector(".target").querySelector(".green")
+          .querySelector(".target")
+          .removeChild(
+            document.querySelector(".target").querySelector(".green")
           );
-          document
+        document
           .querySelector(".target")
           .removeChild(
             document.querySelector(".target").querySelector(".orange")
-            );
-            document
-            .querySelector(".target")
-            .removeChild(document.querySelector(".target").querySelector(".red"));
-            document.querySelector(".accuracy__score").innerHTML = accuracy
-          }
+          );
+        document
+          .querySelector(".target")
+          .removeChild(document.querySelector(".target").querySelector(".red"));
+        document.querySelector(".accuracy__score").innerHTML = accuracy;
+      }
     });
 
     // playing sound after hit
     document.querySelector(".target").addEventListener("click", () => {
       hits++;
       hit.play();
-    })
+    });
     // removing alert
     setTimeout(() => {
       if (

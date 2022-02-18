@@ -24,6 +24,9 @@ input[type=number] {
     width: 100%;
     @include flex(row);
     .menu {
+        position: absolute;
+        left: 0;
+        top: 0;
         padding: 26px 32px;
         background: #fff;
         border-right: 3px solid #1d1b31;
@@ -115,6 +118,38 @@ input[type=number] {
             }
             
         }
+        
+        .num__of__targets {
+            position: relative;
+            height: auto;
+            width: 100%;
+            @include flex(column);
+            justify-content: space-between;
+            row-gap: 10px;
+            
+            input {
+                width: 100%;
+                height: 75px;
+                border-radius: 8px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+                background: #f2f2f2;
+                border: none;
+                outline: none;
+                padding: 16px 32px;
+                font-size: 1.3rem;
+            }
+            p {
+                width: 100%;
+                height: auto;
+                padding: 16px 32px;
+                font-size: 1.3rem;
+                border-radius: 8px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+                color: rgb(46, 32, 32);
+                background: rgba(190, 57, 57, .3);
+                border: 1px solid rgb(173, 60, 60);
+            }
+        }
 
         .playBtn {
             border: none;
@@ -123,38 +158,6 @@ input[type=number] {
             color: #fff;
             padding: 16px 32px;
             border-radius: 40px;
-        }
-    }
-    
-    .num__of__targets {
-        position: relative;
-        height: auto;
-        width: 100%;
-        @include flex(column);
-        justify-content: space-between;
-        row-gap: 10px;
-        
-        input {
-            width: 100%;
-            height: 75px;
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-            background: #f2f2f2;
-            border: none;
-            outline: none;
-            padding: 16px 32px;
-            font-size: 1.3rem;
-        }
-        p {
-            width: 100%;
-            height: auto;
-            padding: 16px 32px;
-            font-size: 1.3rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-            color: rgb(46, 32, 32);
-            background: rgba(190, 57, 57, .3);
-            border: 1px solid rgb(173, 60, 60);
         }
     }
     
@@ -200,7 +203,7 @@ input[type=number] {
             }
         }
     }
-
+    
     .stats {
         display: none;
         height: auto;
