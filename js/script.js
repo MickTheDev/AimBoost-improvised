@@ -1,4 +1,8 @@
 let targetSize;
+let hit = new Audio("audio/hit.wav");
+let hits = 0;
+let allHits = 0;
+let accuracy = '100%'
 let targetSizes = {
   duży: 100,
   średni: 75,
@@ -66,7 +70,7 @@ document.querySelectorAll(".select li").forEach((option) => {
 document.querySelector(".playBtn").addEventListener("click", () => {
   let targets = document.querySelector(".numOfTargets").value;
 
-  if (Number(targets)) {
+  if (Number(targets) && targets > 0) {
     document.querySelector(".target").innerHTML = `<div class="red"></div>
                 <div class="orange"></div>
                 <div class="green"></div>`;
@@ -79,25 +83,57 @@ document.querySelector(".playBtn").addEventListener("click", () => {
 
     // counting clicks
     document.querySelector(".range").addEventListener("click", () => {
+      allHits++;
       targets--;
-      if(targets === 0) {
+      accuracy = `${Math.floor((hits / allHits) * 100)}%`
+      if (targets === 0) {
         document.querySelector(".menu").classList.remove("inGame");
-        document.querySelector(".target").removeChild(document.querySelector(".target").querySelector(".green"))
-        document.querySelector(".target").removeChild(document.querySelector(".target").querySelector(".orange"))
-        document.querySelector(".target").removeChild(document.querySelector(".target").querySelector(".red"))
-      }
+        document.querySelector(".stats").classList.add("active");
+        document
+        .querySelector(".target")
+        .removeChild(
+          document.querySelector(".target").querySelector(".green")
+          );
+          document
+          .querySelector(".target")
+          .removeChild(
+            document.querySelector(".target").querySelector(".orange")
+            );
+            document
+            .querySelector(".target")
+            .removeChild(document.querySelector(".target").querySelector(".red"));
+            document.querySelector(".accuracy__score").innerHTML = accuracy
+          }
     });
+
+    // playing sound after hit
+    document.querySelector(".target").addEventListener("click", () => {
+      hits++;
+      hit.play();
+    })
     // removing alert
     setTimeout(() => {
-      if(document.querySelector(".num__of__targets").contains(document.querySelector("p")))
-      document.querySelector(".num__of__targets").removeChild(document.querySelector(".num__of__targets").querySelector('p'))
-    }, 1000)
+      if (
+        document
+          .querySelector(".num__of__targets")
+          .contains(document.querySelector("p"))
+      )
+        document
+          .querySelector(".num__of__targets")
+          .removeChild(
+            document.querySelector(".num__of__targets").querySelector("p")
+          );
+    }, 1000);
   } else {
     // show alert
-    let p = document.createElement('p')
-    p.innerHTML = "Podaj ilość celi"
-    if(!document.querySelector(".num__of__targets").contains(document.querySelector("p"))) {
-      document.querySelector(".num__of__targets").appendChild(p)
+    let p = document.createElement("p");
+    p.innerHTML = "Podaj ilość celi";
+    if (
+      !document
+        .querySelector(".num__of__targets")
+        .contains(document.querySelector("p"))
+    ) {
+      document.querySelector(".num__of__targets").appendChild(p);
     }
   }
 });
