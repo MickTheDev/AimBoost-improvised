@@ -93,7 +93,7 @@ input[type=number] {
                     }
                 }
             }
-
+            
             &.active {
                 height: auto;
                 .menu__options {
@@ -112,10 +112,19 @@ input[type=number] {
                     }
                 }
             }
+            
+        }
 
+        .playBtn {
+            border: none;
+            font-size: 1.8rem;
+            background: #1d1b31;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 40px;
         }
     }
-
+    
     .num__of__targets {
         position: relative;
         height: 150px;
@@ -146,7 +155,7 @@ input[type=number] {
             border: 1px solid rgb(173, 60, 60);
         }
     }
-
+    
     .range {
         width: 100%;
         height: 100vh;
@@ -188,13 +197,5 @@ input[type=number] {
                 transform: translate(-50%, -50%);
             }
         }
-    }
-    .playBtn {
-        border: none;
-        font-size: 1.8rem;
-        background: #1d1b31;
-        color: #fff;
-        padding: 16px 32px;
-        border-radius: 40px;
     }
 }

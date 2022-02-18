@@ -11,6 +11,7 @@ function rng(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// moving target
 function moveTarget() {
   document.querySelector(".target").style.setProperty(
     "transform",
@@ -29,12 +30,14 @@ function moveTarget() {
   );
 }
 
+// menu
 document
   .querySelector(".target__size .subtitle")
   .addEventListener("click", () => {
     document.querySelector(".target__size").classList.toggle("active");
   });
 
+// changing size of target
 document.querySelectorAll(".select li").forEach((option) => {
   option.addEventListener("click", () => {
     document.querySelector(".target__size").classList.remove("active");
@@ -59,6 +62,7 @@ document.querySelectorAll(".select li").forEach((option) => {
   });
 });
 
+// game start
 document.querySelector(".playBtn").addEventListener("click", () => {
   let targets = document.querySelector(".numOfTargets").value;
 
@@ -66,13 +70,30 @@ document.querySelector(".playBtn").addEventListener("click", () => {
     document.querySelector(".target").innerHTML = `<div class="red"></div>
                 <div class="orange"></div>
                 <div class="green"></div>`;
+    // moving target after click
     document.querySelector(".target").addEventListener("click", moveTarget);
     document.querySelector(".range").addEventListener("click", moveTarget);
+
+    // hidding menu
     document.querySelector(".menu").classList.add("inGame");
+
+    // counting clicks
+    document.querySelector(".range").addEventListener("click", () => {
+      targets--;
+      if(targets === 0) {
+        document.querySelector(".menu").classList.remove("inGame");
+        document.querySelector(".target").removeChild(document.querySelector(".target").querySelector(".green"))
+        document.querySelector(".target").removeChild(document.querySelector(".target").querySelector(".orange"))
+        document.querySelector(".target").removeChild(document.querySelector(".target").querySelector(".red"))
+      }
+    });
+    // removing alert
     setTimeout(() => {
+      if(document.querySelector(".num__of__targets").contains(document.querySelector("p")))
       document.querySelector(".num__of__targets").removeChild(document.querySelector(".num__of__targets").querySelector('p'))
     }, 1000)
   } else {
+    // show alert
     let p = document.createElement('p')
     p.innerHTML = "Podaj ilość celi"
     if(!document.querySelector(".num__of__targets").contains(document.querySelector("p"))) {
