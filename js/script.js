@@ -69,6 +69,8 @@ document.querySelectorAll(".select li").forEach((option) => {
 // game start
 document.querySelector(".playBtn").addEventListener("click", () => {
   let targets = document.querySelector(".numOfTargets").value;
+  let targets2 = targets;
+  let timeStart = new Date();
   allHits = 0;
   hits = 0;
 
@@ -89,6 +91,14 @@ document.querySelector(".playBtn").addEventListener("click", () => {
       targets--;
       accuracy = `${Math.floor((hits / allHits) * 100)}%`;
       if (targets === 0) {
+        let timeEnd = new Date();
+        let timeDifference = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+        timeDifference < 60
+          ? (timeDifference = `${Math.round(timeDifference * 10) / 10}s`)
+          : (timeDifference = `${
+              Math.round((timeDifference / 60) * 100) / 100
+            }min`);
+
         document.querySelector(".menu").classList.remove("inGame");
         document.querySelector(".stats").classList.add("active");
         document
@@ -105,6 +115,10 @@ document.querySelector(".playBtn").addEventListener("click", () => {
           .querySelector(".target")
           .removeChild(document.querySelector(".target").querySelector(".red"));
         document.querySelector(".accuracy__score").innerHTML = accuracy;
+        document.querySelector(
+          ".hits__score"
+        ).innerHTML = `${hits} / ${targets2}`;
+        document.querySelector(".time__score").innerHTML = timeDifference;
       }
     });
 
