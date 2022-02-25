@@ -1,6 +1,5 @@
 let targetSize;
 let hit = new Audio("audio/hit.wav");
-let hits;
 let allHits;
 let accuracy = "0%";
 let targetSizes = {
@@ -72,8 +71,7 @@ document.querySelector(".playBtn").addEventListener("click", () => {
   let targets2 = targets;
   let timeStart = new Date();
   allHits = 0;
-  hits = 0;
-
+  let hits = 0;
   if (Number(targets) && targets > 0) {
     document.querySelector(".target").innerHTML = `<div class="red"></div>
                 <div class="orange"></div>
